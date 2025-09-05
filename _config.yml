@@ -14,9 +14,9 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: Zuk4r1 # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the subtitle
+tagline: Shadow # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -26,23 +26,23 @@ description: >- # used by seo meta and the atom feed
 url: ""
 
 github:
-  username: github_username # change to your GitHub username
+  username: Zuk4r1 # change to your GitHub username
 
-twitter:
-  username: twitter_username # change to your Twitter username
+# twitter:
+  # username: twitter_username # change to your Twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com # change to your email address
+  name: Zuk4r1
+  email: investigacion1956@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your Twitter homepage
-    - https://github.com/username # change to your GitHub homepage
+    # - https://twitter.com/username # change to your Twitter homepage
+    - https://github.com/Zuk4r1 # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/yordan-suarez49706326b
 
 # Site Verification Settings
 webmaster_verifications:
@@ -88,14 +88,14 @@ pageviews:
 #     light — Use the light color scheme
 #     dark — Use the dark color scheme
 #
-theme_mode: # [light | dark]
+theme_mode: [dark]
 
 # The CDN endpoint for media resources.
 # Notice that once it is assigned, the CDN url
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn: "https://chirpy-img.netlify.app"
+# cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/commons/avatar.jpg"
@@ -152,16 +152,15 @@ paginate: 10
 # The base URL of your site
 baseurl: ""
 
-# ------------ The following options are not recommended to be modified ------------------
+# ------------ Hackerpunk Enhanced Config ------------------
 
 kramdown:
   footnote_backlink: "&#8617;&#xfe0e;"
   syntax_highlighter: rouge
-  syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
-    css_class: highlight
-    # default_lang: console
+  syntax_highlighter_opts:
+    css_class: hackerpunk-highlight # <--- clase personalizada para aplicar estilo hackerpunk
     span:
-      line_numbers: false
+      line_numbers: true # Mostrar números en línea (estilo terminal)
     block:
       line_numbers: true
       start_line: 1
@@ -173,32 +172,33 @@ collections:
 
 defaults:
   - scope:
-      path: "" # An empty string here means all files in the project
+      path: ""
       type: posts
     values:
       layout: post
-      comments: true # Enable comments in posts.
-      toc: true # Display TOC column in posts.
-      # DO NOT modify the following parameter unless you are confident enough
-      # to update the code of all other post links in this project.
+      comments: true
+      toc: true
       permalink: /posts/:title/
+      classes: ["hackerpunk-post"] # <--- permite estilizar posts con tema hacker
   - scope:
       path: _drafts
     values:
       comments: false
+      classes: ["hackerpunk-draft"]
   - scope:
       path: ""
-      type: tabs # see `site.collections`
+      type: tabs
     values:
       layout: page
       permalink: /:title/
+      classes: ["hackerpunk-page"]
 
 sass:
-  style: compressed
+  style: compressed # Mantener sitio rápido
 
 compress_html:
   clippings: all
-  comments: all
+  comments: ["<!--", "-->"] # elimina comentarios para estética limpia
   endings: all
   profile: false
   blanklines: false
