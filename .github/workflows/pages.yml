@@ -3,12 +3,17 @@ name: Build and Deploy Jekyll Site
 on:
   push:
     branches:
-      - master  # o main, según tu repo
+      - master
 
 permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -20,7 +25,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1
+          ruby-version: 3.2
           bundler-cache: true
 
       - name: Install dependencies
@@ -35,8 +40,11 @@ jobs:
           path: ./_site
 
   deploy:
-    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
